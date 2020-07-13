@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Own
     'users',
     'business',
+    'influencers',
 ]
 
 MIDDLEWARE = [
