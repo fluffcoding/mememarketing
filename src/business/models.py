@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from multiselectfield import MultiSelectField
+
+
 User = get_user_model()
 
 
@@ -24,8 +27,8 @@ class Campaign(models.Model):
     7. Campaign Active or not boolean'''
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
-    budget = models.IntegerField()
-    #services = MultiSelectField(choices=SM_SERVICES, null=True, blank=True)
+    advertising_budget = models.IntegerField()
+    services = MultiSelectField(choices=SM_SERVICES, null=True, blank=True)
     description = models.TextField()
-    number_of_memes = models.IntegerField()
+    number_of_memes = models.IntegerField(null=True, blank=True)
     active = models.BooleanField(default=False)

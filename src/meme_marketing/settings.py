@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3rd Party
+    'multiselectfield',
+    'formtools',
+    'crispy_forms',
 
     # Own
     'users',
@@ -131,3 +134,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
 # Specifying custom user model
 AUTH_USER_MODEL = 'users.User'
+
+
+# Crispy Form Template Pack
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
