@@ -17,6 +17,7 @@ class ServiceTypes(forms.ModelForm):
 
 
 class ContentForm(forms.ModelForm):
+    number_of_memes = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range'}))
     class Meta:
         model = Campaign
-        fields = ('description',)
+        fields = ('description','number_of_memes',)

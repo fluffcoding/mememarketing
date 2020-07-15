@@ -18,15 +18,16 @@ class CampaignCreateView(SessionWizardView):
     def done(self, form_list, **kwargs):
         form_data = [form.cleaned_data for form in form_list]
         final = {}
+        # New and awesome way of joining form data
         for data in form_data:
             final.update({**data})
         '''    
         print(final)
+        # Old and less awesome way
         a = form_data[0]
         b = form_data[1]
         c = form_data[2]
         final = {**a,**b,**c}'''
-        print(final)
         obj = Campaign(**final)
         obj.user = self.request.user
         obj.save()
@@ -35,3 +36,11 @@ class CampaignCreateView(SessionWizardView):
             'form_data': [form.cleaned_data for form in form_list],
             'obj': obj,
         })
+
+
+def my_campaign_list(request):
+    campaigns = Campaign.objects.filter(user=request.user)
+    context = {
+        'campaigns': campaigns,
+    }
+    return render(request, 'business/campaign_list.html', context)

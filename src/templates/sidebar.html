@@ -5,12 +5,18 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active m-2">
-            <a href="#">
+            <a href="{% url 'business:create-campaign' %}">
               <i class="tim-icons icon-spaceship"></i>
               <p>Launch Campaign</p>
             </a>
           </li>
-          <li>
+          <li class="m-2">
+            <a href="{% url 'business:my-campaigns' %}">
+              <i class="tim-icons icon-bullet-list-67"></i>
+              <p>My Campaigns</p>
+            </a>
+          </li>
+          <li class="m-2">
             <a href="#">
               <i class="tim-icons icon-satisfied"></i>
               <p>Create Memes</p>
