@@ -1,6 +1,23 @@
+<style>
+.footer {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+}
+.bottom-right {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+.bottom-left {
+  position: fixed;
+  bottom: 0;
+  left: 20%;
+}
+</style>
       <footer class="footer">
         <div class="container-fluid">
-          <ul class="nav">
+          {% comment %}<ul class="nav">
             <li class="nav-item">
               <a href="javascript:void(0)" class="nav-link">
                 Creative Tim
@@ -17,10 +34,14 @@
               </a>
             </li>
           </ul>
-          <div class="copyright">
-            
+          {% endcomment %}
+          <div class="copyright mr-3 mb-3 bottom-right">
             Made with ❤️ by
-            <a href="">Fluff Coding</a> © 2020. 
+            <a href="">Fluff Coding</a>. 
+          </div>
+          
+          <div class="copyright bottom-left mb-3 ">
+            © Copyright 2020 Meme Marketing. 
           </div>
         </div>
       </footer>

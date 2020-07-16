@@ -4,12 +4,12 @@ from .models import Campaign
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from formtools.wizard.views import SessionWizardView
+from django.contrib.auth.decorators import login_required
 
 
-
+@login_required
 def test_function(request):
     return render(request, 'base.html',{})
-
 
 class CampaignCreateView(SessionWizardView):
     template_name = 'business/campaign_create.html'
@@ -37,10 +37,19 @@ class CampaignCreateView(SessionWizardView):
             'obj': obj,
         })
 
-
+@login_required
 def my_campaign_list(request):
     campaigns = Campaign.objects.filter(user=request.user)
     context = {
         'campaigns': campaigns,
     }
     return render(request, 'business/campaign_list.html', context)
+
+
+@login_required
+def single_campaign(request, id):
+    campaign = Campaign.objects.get(id=id)
+    context = {
+        'campaign': campaign,
+    }
+    return render(request, "business/single_campaign.html", context)

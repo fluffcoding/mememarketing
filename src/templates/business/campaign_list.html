@@ -21,8 +21,10 @@
     <p>You don't have any campaigns! Create a new campaign </p><br>
     </div>
     {% endfor %}
-    <div class="card m-3" style="width: 18rem;">
-        <a href="{% url 'business:create-campaign' %}"<i class="tim-icons icon-simple-add m-3 text-center" style="font-size: 90px; line-height: 130px;"></i></a>
+    <div class="col-3">
+        <div class="card m-3" style="width: 18rem;">
+            <a href="{% url 'business:create-campaign' %}"<i class="tim-icons icon-simple-add m-3 text-center" style="font-size: 90px; line-height: 143px;"></i></a>
+        </div>
     </div>
 </div>
 {% endblock content %}
