@@ -37,3 +37,11 @@ def post_memes_for_campaign(request, id):
         'form': meme_submit_form,
     }
     return render(request, 'memers/post_memes_campaign.html', context)
+
+
+@login_required
+def delete_meme_view(request, id):
+    meme_images = get_object_or_404(MemeImages, id=id)
+    campaign = meme_images.parent_meme.campaign.id
+    meme_images.delete()
+    return redirect(f'/memers/campaign/{campaign}' )

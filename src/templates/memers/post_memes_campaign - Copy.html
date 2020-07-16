@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<button class="btn btn-secondary "><a class="text-light" href="/memers/active-campaigns/">Back to active campaigns</a></button>
+<h2>{{ campaign.title }}</h2>
+<p>{{ campaign.description }}</p>
+<form method="POST" enctype="multipart/form-data" action="#end">
+{% csrf_token %}
+{{ form|crispy }}
+<a href="#end"><button class="btn btn-success" type="submit">Send</submit></button></a>
+</form>
+{% if meme_images %}
+<hr />
+<h2> Your submissions {% for m in meme_images %}
+{% if forloop.first %}
+<span class="badge badge-primary" style='font-size:25px;'>{{ forloop.revcounter }}</span>
+{% endif %}
+{% endfor %}</h2>
+
+<div class="row">
+{% endif %}
+{% for m in meme_images %}
+<div class="col-w-auto">
+{{ m.meme.memer }}<br>
+<img class="ml-3" src="{{ m.image.url }}" height=370px></src>
+</div>
+
+{% endfor %}
+<div id="end">
+</div>
+<div class="card__collection clear-fix">
+<div class="cards cards--two">
+    <img src="https://images.unsplash.com/photo-1504703395950-b89145a5425b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d702cb99ca804bffcfa8820c46483264&auto=format&fit=crop&w=651&q=80" class="img-responsive" alt="Cards Image">
+    <span class="cards--two__rect"></span>
+    <span class="cards--two__tri"></span>
+    <p>Lucy Grace</p>
+    <ul class="cards__list">
+      <li><i class="fas fa-trash-alt"></i></li>
+      <li><i class="fab fa-twitter"></i></li>
+      <li><i class="fab fa-instagram"></i></li>
+      <li><i class="fab fa-linkedin-in"></i></li>
+    </ul>
+  </div>
+</div>
+
+{% endblock content %}

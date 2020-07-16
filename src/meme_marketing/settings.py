@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'formtools',
     'crispy_forms',
 
+    'django.contrib.humanize',
+
     # Own
     'users',
     'business',
