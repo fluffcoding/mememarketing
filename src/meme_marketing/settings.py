@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'users',
     'business',
     'influencers',
+    'memers',
 ]
 
 MIDDLEWARE = [
