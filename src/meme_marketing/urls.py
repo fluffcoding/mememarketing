@@ -11,6 +11,7 @@ urlpatterns = [
     path('business/', include('business.urls')),
     path('accounts/', include('allauth.urls')),
     path('memers/', include('memers.urls')),
+    path('influencers/',include('influencers.urls')),
     path('', test_function),
 ]
 if settings.DEBUG:

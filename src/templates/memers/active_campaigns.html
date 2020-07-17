@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if campaigns %}
-    <h1> Active Campaigns </h1>
+{% include 'components/heading.html' with heading='Active Campaigns' tagline='You can send memes for these campaigns!' %}
 {% else %}
     <h3> No campaigns available </h3>
 {% endif %}

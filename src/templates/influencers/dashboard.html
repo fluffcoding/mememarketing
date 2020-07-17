@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'components/heading.html' with heading='Your active assignments' tagline='This page includes your active assignments!' %}
+{% for campaign in campaigns %}
+    <div class="card p-3">
+            <div class="card-header">
+                <p>Campaign Name</p>
+                <h1 style="margin-bottom:0px;">{{ campaign.campaign_name.title }}</h1>
+            </div>
+            <div class="card-body">
+                {% comment %}<p>{{ campaign.social_media_platform }}</p>
+                {% endcomment %}
+                <p>Estimated earnings:<br> <b style="font-size:25px">1300 Rs</b></p>
+                <a class="btn btn-primary btn-lg" href="#" style="font-size:20px;">Deliver</a>
+            </div>
+        </div>
+<div class="row">
+{% for meme in campaign.memes.all %}
+    <div class="col-lg-auto">
+        <div class="card__collection clear-fix">
+          <div class="cards cards--two">
+              <img src="{{ meme.image.url }}" height="370px" >
+              <span class="cards--two__rect"></span>
+              <span class="cards--two__tri"></span>
+              <p>Meme {{m.id}}</p>
+              <ul class="cards__list">
+                <a href="#"><li><i class="fas fa-trash-alt"></i></li></a>
+            </ul>
+          </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endfor %}      
+
+{% endblock content %}

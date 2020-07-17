@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1> Create a campaign </h1><br>
+{% include 'components/heading.html' with heading='create a campaign' %}
 {% if wizard.steps.step1 == 1 %}
 <h5 class="text-center" ><span class="badge badge-secondary">1</span> Campaign basics - 
     <span class="badge badge-secondary">2</span> Select platforms  - 

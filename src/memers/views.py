@@ -31,7 +31,7 @@ def post_memes_for_campaign(request, id):
         MemeImages.objects.create(parent_meme=parent_meme,image=image)
         
     context = {
-        #'campaign': campaign,
+        'campaign': campaign,
         'meme': meme_object,
         'meme_images': meme_images,
         'form': meme_submit_form,
@@ -43,5 +43,6 @@ def post_memes_for_campaign(request, id):
 def delete_meme_view(request, id):
     meme_images = get_object_or_404(MemeImages, id=id)
     campaign = meme_images.parent_meme.campaign.id
-    meme_images.delete()
+    if meme_images.parent_meme.memer == request.user:
+        meme_images.delete()
     return redirect(f'/memers/campaign/{campaign}' )

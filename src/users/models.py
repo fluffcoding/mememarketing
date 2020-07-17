@@ -55,3 +55,6 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(null=True)
     phone_number = models.CharField(max_length=12)
+
+    def __str__(self):
+        return self.user.email

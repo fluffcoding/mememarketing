@@ -32,3 +32,7 @@ class Campaign(models.Model):
     description = models.TextField()
     number_of_memes = models.IntegerField(null=True, blank=True)
     active = models.BooleanField(default=False)
+
+    
+    def __str__(self):
+        return self.title + " - " +self.user.email

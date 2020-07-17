@@ -2,11 +2,11 @@
 
 
 {% block content %}
-<h2> My Campaigns </h2>
+{% include 'components/heading.html' with heading='My Campaigns' %}
 <div class="row">
     {% for campaign in campaigns %}
         <div class="col-3">
-            <div class="card m-3" style="width: 18rem;">
+            <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h3 class="card-title"><a href="/business/campaign/{{campaign.id}}">{{ campaign.title|capfirst }}</a></h3>
                     <h6 class="card-subtitle mb-2">Budget: {{ campaign.advertising_budget }}</h6>
@@ -22,7 +22,7 @@
     </div>
     {% endfor %}
     <div class="col-3">
-        <div class="card m-3" style="width: 18rem;">
+        <div class="card" style="width: 18rem;">
             <a href="{% url 'business:create-campaign' %}"<i class="tim-icons icon-simple-add m-3 text-center" style="font-size: 90px; line-height: 143px;"></i></a>
         </div>
     </div>
