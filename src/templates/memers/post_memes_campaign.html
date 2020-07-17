@@ -4,23 +4,26 @@
 
 {% block content %}
 {% include 'components/heading.html' with heading=campaign.title %}
-  <p class="blockquote blockquote-white"><b>Instructions:</b> {{campaign.description|capfirst}}</p>
+  <p class="blockquote blockquote-white text-center"><b>Instructions:</b> {{campaign.description|capfirst}}</p>
     <form method="POST" enctype="multipart/form-data" action="#end" style='color:white;'>
       {% csrf_token %}
         {{ form|crispy }}
         <a href="#end"><button class="btn btn-success" type="submit">Send</submit></button></a>
     </form>
   {% if meme_images %}
-  <hr />
-    <h2> Your submissions {% for m in meme_images %}
+  <br />
+    <h2 class="text-center"> Your submissions {% for m in meme_images %}
       {% if forloop.first %}
       <span class="badge badge-primary" style='font-size:25px;'>{{ forloop.revcounter }}</span>
   {% endif %}
   {% endfor %}</h2>
-  <div class="row">
   {% endif %}
+  <div class="row">
+
 {% for m in meme_images %}
-    <div class="col-lg-auto">
+{% comment %}    {% include 'components/animated_image.html' with image_url=m.image.url icon1class='fas fa-trash-alt' %}
+{% endcomment %}
+<div class="col-lg-auto">
         <div class="card__collection clear-fix">
           <div class="cards cards--two">
               <img src="{{ m.image.url }}" height="370px" >
@@ -41,8 +44,20 @@
   {% endfor %}
   </div>
   <div id="end">
-  <button class="btn btn-secondary "><a class="text-white" href="{% url 'active-campaigns' %}">Back to active campaigns</a></button>
 </div>
 
-
+{% comment %}<div class="col-lg-auto">
+        <div class="card__collection clear-fix">
+          <div class="cards cards--two">
+              <img src="{{ m.image.url }}" height="370px" >
+              <span class="cards--two__rect"></span>
+              <span class="cards--two__tri"></span>
+              <p>Meme {{m.id}}</p>
+              <ul class="cards__list">
+                <a href="{% url 'delete-meme' m.id %}"><li><i class="fas fa-trash-alt"></i></li></a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    {% endcomment %}
 {% endblock content %}

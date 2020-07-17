@@ -58,3 +58,13 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.email
+
+
+class Notifications(models.Model):
+    profile = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    notification = models.CharField(max_length=100)
+    detail = models.TextField()
+    link = models.URLField()
+
+    class Meta:
+        verbose_name_plural = 'Notifications'

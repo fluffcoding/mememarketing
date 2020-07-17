@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'components/heading.html' with heading=campaign.campaign_name.title tagline='You can fulfill campaign requests here!' %}
+<div class="row">
+    {% for meme in campaign.memes.all %}
+    {% include 'components/animated_image.html' with image_url=meme.image.url %}
+    {% endfor %}
+</div>
+{% endblock content %}

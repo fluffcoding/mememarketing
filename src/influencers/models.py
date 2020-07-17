@@ -28,7 +28,7 @@ class CampaignExecutionUnit(models.Model):
 
 
 class SocialMediaAsset(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.DO_NOTHING)
+    profile = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     platform = models.CharField(max_length=20, choices=SM_PLATFORMS)
     permissions_granted = models.BooleanField(default=False)
     cpi = models.FloatField(null=True, blank=True)

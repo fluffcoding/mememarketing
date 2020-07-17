@@ -8,3 +8,11 @@ def influencer_dashboard(request):
         'campaigns': campaign_execution_requests,
     }
     return render(request, 'influencers/dashboard.html', context)
+
+
+def single_campaign_execution(request, id):
+    campaign_execution = CampaignExecutionUnit.objects.get(id=id)
+    context = {
+        'campaign': campaign_execution,
+    }
+    return render(request, 'influencers/single_campaign_execution.html', context)

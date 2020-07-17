@@ -36,3 +36,8 @@ class Campaign(models.Model):
     
     def __str__(self):
         return self.title + " - " +self.user.email
+
+    @property
+    def run_campaign(self):
+        self.active = True
+        return 'Campaign activated'
